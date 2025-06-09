@@ -1,0 +1,24 @@
+Exemplo: 
+Foi criado uma classe VisualEffects de efeitos visuais para ser reutilizada em varios contextos diferentes.
+Na classe VisualEffects tem o metodo flip(x: integer, y: integer, degree: integer).
+Tenho algumas classes que podem ser adaptadas para utilizar essa classe.
+Como a classe VisualComponent que tem varios subclasses como GeometricalComponent e LineComponent, 
+e outra classe TextComponent que tem varias subclasses como SingleLineComponent e MultiLineComponent mas essas duas
+superclasses não tem herança comum. Não posso alterar essas superclasses nem criar subclasses de 
+VisualComponent e TextComponent que implementem a interface de VisualEffects.
+Então eu crio um Adapter para as subclasses de VisualComponent e TextComponent que permita utilizar o VisualEffects.
+Poderia ser criado uma interface FlipableObjectInterface que define o método flip(object: FlipableObject, degree: integer).
+e em sequencia uma classe adapter AdapterGeometricalComponentToFlipableObject que implementa essa interface e adapta
+a chamada para que o VisualEffects.flip seja chamada.
+
+
+
+Essas classes são instanciadas em uma classe cliente Page. E dentro da classe Page quero usar o flip de VisualEffects
+em varios componentes por exemplo as instâncias de VisualComponent e TextComponent. 
+Então eu crio uma interface para flip que recebe teria o metodo flip(object: VisualObject, degree: integer)
+
+
+
+de VisualComponent e TextComponent mas não podemos alterar essas super classes nem criar subclasses de GeometricalComponent
+implementando a interface de VisualEffects. Podemos criar uma Adapter para as subclasses de VisualComponent e TextComponent
+para que permita utilizar o VisualEffects sem mudar a interface de VisualEffects nem de VisualComponent e TextComponent
